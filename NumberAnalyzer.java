@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -16,14 +16,17 @@ public class NumberAnalyzer
 	public NumberAnalyzer()
 	{
 		//Just make the ArrayList exist.
+		list = new ArrayList<Number>();
 	}
 
 	//Modified Constructor
 	public NumberAnalyzer(String numbers)
 	{
 		//Make the list exist first
+		list = new ArrayList<Number>();
 
 		//Filter the parameter through to the set method
+		setList(numbers);
 
 	}
 
@@ -31,20 +34,31 @@ public class NumberAnalyzer
 	public void setList(String numbers)
 	{
 		//Clear the list
+		list.clear();
 
 
 		//Create a scanner to chop up the string of numbers
+		Scanner chopper = new Scanner(numbers);
 
 
 		//Chop up the string
-
+        while(chopper.hasNext())
+		{
+			list.add(new Number(chopper.nextInt()));
+		}
 
 	}
 
 	public int countOdds()
 	{
       	int oddCount=0;
+		int i = 0;
 
+		for(i = 0; i < list.size(); i++)
+		{
+			if(list.get(i).isOdd())
+			oddCount++;
+		}
 
       	return oddCount;
 	}
@@ -52,7 +66,14 @@ public class NumberAnalyzer
 	public int countEvens()
 	{
       	int evenCount=0;
+		  int i = 0;
 
+		  for(i = 0; i < list.size(); i++)
+		  {
+			  if(!list.get(i).isOdd())
+			  evenCount++;
+		  }
+  
 
       	return evenCount;
 
@@ -62,12 +83,20 @@ public class NumberAnalyzer
       	 *return list.size()-countOdds();
       	 *
       	 */
+		
 	}
 
 	public int countPerfects()
 	{
       	int perfectCount=0;
+		  int i = 0;
 
+		  for(i = 0; i < list.size(); i++)
+		  {
+			  if(list.get(i).isPerfect())
+			  perfectCount++;
+		  }
+  
 
       	return perfectCount;
 	}
